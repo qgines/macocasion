@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Macocasion | MacBooks de ocasión en España</title>
+  <meta name="description" content="MacBooks de ocasión revisados en España. Factura, garantía 1 año y 15 días de devolución. Compra por WhatsApp."/>
+  <style>
+    :root{
+      --bg:#f5f5f7; --card:#fff; --text:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --accent:#000;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background: radial-gradient(1000px 600px at 10% 0%, #ffffff 0%, var(--bg) 60%),
+                  radial-gradient(900px 500px at 90% 20%, #ffffff 0%, var(--bg) 55%),
+                  linear-gradient(180deg,#fff,var(--bg));
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,92vw);margin:0 auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.82);
+      backdrop-filter:saturate(180%) blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;flex-wrap:wrap}
+    .logo{height:58px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 16px;border-radius:999px;border:1px solid var(--line);
+      background:#fff;cursor:pointer;font-size:14px;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .hero{padding:54px 0 28px}
+    .heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}
+    h1{font-size:48px;letter-spacing:-.8px;line-height:1.05;margin:0 0 12px}
+    .lead{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 18px}
+    .pillRow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 24px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:999px;border:1px solid rgba(210,210,215,.7);
+      background:rgba(255,255,255,.75);
+      color:var(--text);font-size:13px;
+    }
+    .heroCard{
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(210,210,215,.6);
+      border-radius:var(--radius);
+      box-shadow:0 20px 60px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .heroCardTop{
+      padding:18px;border-bottom:1px solid rgba(210,210,215,.55);
+      display:flex;align-items:center;justify-content:space-between;gap:10px
+    }
+    .heroCardTop strong{font-size:14px}
+    .heroCardBody{padding:18px}
+    .kpi{background:#fff;border:1px solid rgba(210,210,215,.55);border-radius:18px;padding:14px;margin-bottom:10px}
+    .kpi .big{font-weight:900;font-size:20px}
+    .kpi .small{color:var(--muted);font-size:12px;margin-top:4px}
+    .section{padding:18px 0 46px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+    .card{
+      background:var(--card);
+      border:1px solid rgba(210,210,215,.55);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 34px rgba(0,0,0,.06);
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+
+    /* Carrusel */
+    .carouselWrap{
+      margin-top:14px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(210,210,215,.6);
+      border-radius:var(--radius);
+      box-shadow:0 18px 44px rgba(0,0,0,.06);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .carouselTop{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .carouselTop h2{margin:0;font-size:22px;letter-spacing:-.2px}
+    .carouselTop .sub{margin:0;color:var(--muted);font-size:13px}
+    .carouselBtns{display:flex;gap:10px;align-items:center}
+    .cBtn{
+      width:42px;height:42px;border-radius:999px;border:1px solid rgba(210,210,215,.7);
+      background:rgba(255,255,255,.9);cursor:pointer;font-size:20px;line-height:40px;
+    }
+    .track{
+      display:flex;gap:14px;
+      overflow:auto;scroll-snap-type:x mandatory;
+      padding:14px 2px 6px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .track::-webkit-scrollbar{height:10px}
+    .track::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:999px}
+    .pCard{
+      flex:0 0 320px;
+      scroll-snap-align:start;
+      background:#fff;border:1px solid rgba(210,210,215,.55);
+      border-radius:22px;overflow:hidden;
+      box-shadow:0 14px 34px rgba(0,0,0,.06);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .pCard:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.10)}
+    .pImg{height:170px;background:linear-gradient(180deg,#ffffff,#f0f0f2);padding:12px}
+    .pImg img{width:100%;height:100%;object-fit:cover;border-radius:16px;border:1px solid rgba(210,210,215,.6);background:#fff}
+    .pBody{padding:14px 14px 16px}
+    .pTitle{font-weight:800;font-size:15px;line-height:1.25}
+    .pMeta{color:var(--muted);font-size:12px;margin-top:6px}
+    .pRow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+    .pPrice{font-weight:900;font-size:18px}
+    footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:12px}
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+    @media(max-width:980px){
+      .heroGrid{grid-template-columns:1fr}
+      h1{font-size:40px}
+      .cards{grid-template-columns:1fr}
+      .pCard{flex-basis:78vw}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container bar">
+    <a href="index.html"><img src="img/logo-macocasion.png" class="logo" alt="macocasion.com"></a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="legal.html">Legal</a>
+      <a class="btn primary" href="productos.html">Ver productos</a>
+      <a class="btn" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container heroGrid">
+      <div>
+        <h1>MacBooks de ocasión<br/>con confianza.</h1>
+        <p class="lead">Equipos revisados y listos para usar en España. Compra directa por WhatsApp, con <strong>factura</strong>, <strong>garantía 1 año</strong> y <strong>15 días de devolución</strong>.</p>
+
+        <div class="pillRow">
+          <div class="pill">✅ Revisados</div>
+          <div class="pill">🧾 Factura</div>
+          <div class="pill">🛡️ Garantía 1 año</div>
+          <div class="pill">↩️ Devolución 15 días</div>
+          <div class="pill">🚚 Envío 24/48h</div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="productos.html">Ver MacBooks disponibles</a>
+          <a class="btn" id="waHero" href="#" target="_blank" rel="noopener">Pedir asesoramiento</a>
+        </div>
+      </div>
+
+      <aside class="heroCard" aria-label="Resumen">
+        <div class="heroCardTop">
+          <strong>Cómo compramos</strong>
+          <span style="color:var(--muted);font-size:12px">Simple y rápido</span>
+        </div>
+        <div class="heroCardBody">
+          <div class="kpi"><div class="big">1)</div><div class="small">Elige el equipo en “Productos”.</div></div>
+          <div class="kpi"><div class="big">2)</div><div class="small">Habla por WhatsApp y resolvemos dudas.</div></div>
+          <div class="kpi"><div class="big">3)</div><div class="small">Pago y envío. Recibes factura.</div></div>
+          <div class="kpi" style="margin-bottom:0"><div class="big">4)</div><div class="small">Garantía 1 año + 15 días devolución.</div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Mini carrusel -->
+  <section class="section">
+    <div class="container">
+      <div class="carouselWrap">
+        <div class="carouselTop">
+          <div>
+            <h2>Destacados</h2>
+            <p class="sub">MacBooks disponibles ahora mismo</p>
+          </div>
+          <div class="carouselBtns">
+            <button class="cBtn" id="cPrev" aria-label="Anterior">‹</button>
+            <button class="cBtn" id="cNext" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+        <div class="track" id="track" aria-label="Carrusel de productos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 style="margin:0;font-size:26px;letter-spacing:-.2px">Lo que cuidamos por ti</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Transparencia</h3>
+          <p>Fotos reales del equipo, ciclos de batería, estado y detalles claros para que compres con tranquilidad.</p>
+        </div>
+        <div class="card">
+          <h3>Revisión</h3>
+          <p>Comprobamos funcionamiento general, batería y estado estético antes de publicar cada MacBook.</p>
+        </div>
+        <div class="card">
+          <h3>Soporte rápido</h3>
+          <p>Te respondemos por WhatsApp para ayudarte a elegir el modelo adecuado según uso y presupuesto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="y"></span> macocasion.com · España · <a href="legal.html">Aviso legal</a>
+  </div>
+</footer>
+
+<script src="js/store.js"></script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  (async () => {
+    const { config, products, waLink } = await window.MCO_STORE.loadStore();
+    const waNum = (config && config.wa_number) ? config.wa_number : "34XXXXXXXXX";
+
+    const wa = (msg) => waLink(waNum, msg);
+    document.getElementById("waTop").href  = wa("Hola, vengo de macocasion.com. Quiero información sobre un MacBook de ocasión.");
+    document.getElementById("waHero").href = wa("Hola, necesito ayuda para elegir un MacBook de ocasión. Mi presupuesto es ____ y lo usaré para ____.");
+
+    // Carrusel (muestra hasta 6, pero con 1-3 queda perfecto)
+    const PRODUCTS = (products || []).slice(0, 6);
+    const track = document.getElementById("track");
+
+    function cardHTML(p){
+      const cover = (p.images && p.images.find(x=>typeof x==="string" && x.length)) || "";
+      return `
+        <article class="pCard" onclick="location.href='productos.html'">
+          <div class="pImg"><img src="${cover}" alt="${p.title}"></div>
+          <div class="pBody">
+            <div class="pTitle">${p.title}</div>
+            <div class="pMeta">Estado: ${p.estado} · ${p.batteryCycles} ciclos · ${p.ref}</div>
+            <div class="pRow">
+              <div class="pPrice">${Number(p.price).toFixed(0)} €</div>
+              <a class="btn primary" href="${wa(p.waMsg || "Hola, estoy interesado/a.")}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Comprar</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    if(!PRODUCTS.length){
+      track.innerHTML = `<div style="color:var(--muted);padding:14px 6px">Aún no hay productos publicados. Cuando los subas, aparecerán aquí automáticamente.</div>`;
+    } else {
+      track.innerHTML = PRODUCTS.map(cardHTML).join("");
+    }
+
+    function scrollByCard(dir){
+      const first = track.querySelector(".pCard");
+      const amount = first ? (first.getBoundingClientRect().width + 14) : 320;
+      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+    document.getElementById("cPrev").onclick = ()=>scrollByCard(-1);
+    document.getElementById("cNext").onclick = ()=>scrollByCard(1);
+  })();
+</script>
+</body>
+</html>
