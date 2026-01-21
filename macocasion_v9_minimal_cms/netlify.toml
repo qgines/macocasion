@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+
+# Recomendado para Identity/Git Gateway
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"

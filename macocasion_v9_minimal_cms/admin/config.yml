@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/products"
+public_folder: "/img/products"
+
+publish_mode: simple
+
+collections:
+  - name: "settings"
+    label: "Ajustes"
+    files:
+      - name: "config"
+        label: "WhatsApp"
+        file: "data/config.json"
+        format: "json"
+        fields:
+          - { label: "Número WhatsApp (sin +)", name: "wa_number", widget: "string" }
+
+  - name: "catalog"
+    label: "Productos"
+    files:
+      - name: "products"
+        label: "Catálogo"
+        file: "data/products.json"
+        format: "json"
+        fields:
+          - label: "Productos"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.price}}€"
+            fields:
+              - { label: "ID (único)", name: "id", widget: "string", hint: "Ej: pro-2017-a1706" }
+              - { label: "Tipo", name: "tipo", widget: "select", options: ["Air", "Pro", "iMac", "Mac mini", "Mac Studio", "Mac Pro"] }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Año", name: "year", widget: "number" }
+              - { label: "Estado", name: "estado", widget: "select", options: ["Como nuevo", "Muy bueno", "Bueno", "Correcto"] }
+              - { label: "Precio (€)", name: "price", widget: "number" }
+              - { label: "Ciclos de batería", name: "batteryCycles", widget: "number", required: false }
+              - { label: "Referencia (modelo)", name: "ref", widget: "string", required: false }
+              - { label: "Descripción corta", name: "shortDesc", widget: "string", required: false }
+              - label: "Imágenes (galería)"
+                name: "images"
+                widget: "list"
+                field: { label: "Imagen", name: "image", widget: "image" }
+              - { label: "Mensaje WhatsApp (opcional)", name: "waMsg", widget: "text", required: false }

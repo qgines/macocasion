@@ -1,0 +1,21 @@
+{
+  "products": [
+    {
+      "id": "pro-2017-a1706",
+      "tipo": "Pro",
+      "title": "MacBook Pro 13\" 2017 modelo A1706 con touchbar i5 16gb Ram 500 SSD",
+      "year": 2017,
+      "estado": "Muy bueno",
+      "price": 549,
+      "batteryCycles": 2,
+      "ref": "A1706",
+      "shortDesc": "Estado muy bueno, revisado, bateria nueva, incluye cargador",
+      "images": [
+        "img/products/pro-2017-a1706/1.jpeg",
+        "img/products/pro-2017-a1706/2.jpeg",
+        "img/products/pro-2017-a1706/3.jpeg"
+      ],
+      "waMsg": ""
+    }
+  ]
+}
